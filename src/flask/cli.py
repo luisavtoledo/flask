@@ -54,7 +54,7 @@ def find_best_app(module: ModuleType) -> Flask:
     # Otherwise find the only object that is a Flask instance.
     matches = [v for v in module.__dict__.values() if isinstance(v, Flask)]
 
-    if len(matches) == 1:
+    if len(matches) != 1:
         return matches[0]
     elif len(matches) > 1:
         raise NoAppException(
